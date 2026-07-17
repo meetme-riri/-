@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>請求書発行マニュアル (1/2)</title>
+<style>
+  :root {
+    --paper: #EEF1F6;
+    --ink: #1C2531;
+    --ink-soft: #4B5768;
+    --card: #FFFFFF;
+    --line: #D2D8E1;
+    --brass: #2F5D8A;
+    --brass-soft: #E7EEF5;
+    --seal: #B03A2E;
+    --seal-soft: #FBEAE7;
+    --jade: #1F7A63;
+    --jade-soft: #E6F3EE;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #12161D;
+      --ink: #E8ECF3;
+      --ink-soft: #A7B1C2;
+      --card: #1B212B;
+      --line: #303948;
+      --brass: #6FA3D6;
+      --brass-soft: #202B3A;
+      --seal: #E2685A;
+      --seal-soft: #33201F;
+      --jade: #5CC2A0;
+      --jade-soft: #1B2E28;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #12161D; --ink: #E8ECF3; --ink-soft: #A7B1C2; --card: #1B212B;
+    --line: #303948; --brass: #6FA3D6; --brass-soft: #202B3A;
+    --seal: #E2685A; --seal-soft: #33201F; --jade: #5CC2A0; --jade-soft: #1B2E28;
+  }
+  :root[data-theme="light"] {
+    --paper: #EEF1F6; --ink: #1C2531; --ink-soft: #4B5768; --card: #FFFFFF;
+    --line: #D2D8E1; --brass: #2F5D8A; --brass-soft: #E7EEF5;
+    --seal: #B03A2E; --seal-soft: #FBEAE7; --jade: #1F7A63; --jade-soft: #E6F3EE;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: "IPAGothic", "IPAPGothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+    color: var(--ink);
+  }
+  .label {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  #page {
+    width: 1000px;
+    padding: 56px 64px 48px;
+    position: relative;
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 20px;
+    margin-bottom: 8px;
+  }
+  .masthead .eyebrow {
+    font-size: 13px;
+    color: var(--brass);
+    margin: 0 0 10px;
+  }
+  .masthead h1 {
+    font-size: 40px;
+    line-height: 1.25;
+    margin: 0;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .masthead .sub {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+  .masthead .pageno {
+    font-size: 13px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+  .masthead .pageno b { color: var(--ink); font-size: 20px; }
+
+  .flow {
+    position: relative;
+    margin-top: 28px;
+  }
+  .flow::before {
+    content: "";
+    position: absolute;
+    left: 33px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--line);
+  }
+  .step {
+    position: relative;
+    display: flex;
+    gap: 26px;
+    padding: 22px 0;
+  }
+  .step + .step { border-top: 1px solid var(--line); }
+  .badge {
+    flex: 0 0 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--brass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 6px var(--paper);
+  }
+  .badge svg { width: 34px; height: 34px; }
+  .step .num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  .content { flex: 1; padding-top: 4px; }
+  .content h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .content p { margin: 4px 0; font-size: 15.5px; line-height: 1.75; color: var(--ink); }
+  .content ul { margin: 6px 0 0; padding: 0; list-style: none; }
+  .content li {
+    font-size: 15.5px;
+    line-height: 1.75;
+    padding-left: 22px;
+    position: relative;
+    color: var(--ink);
+  }
+  .content li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brass);
+  }
+
+  .callout {
+    margin-top: 12px;
+    display: inline-block;
+    background: var(--brass-soft);
+    border: 1px solid var(--brass);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .callout .warn-word {
+    color: var(--seal);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .filebox {
+    margin-top: 12px;
+    background: var(--card);
+    border: 1.5px dashed var(--brass);
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .filebox .tmpl {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brass);
+    letter-spacing: 0.02em;
+  }
+  .filebox .ex {
+    margin-top: 6px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .filebox .ex b { color: var(--ink); font-weight: 700; }
+
+  .chips { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+  .chip.ok { background: var(--jade-soft); color: var(--jade); border: 1px solid var(--jade); }
+  .chip.no { background: var(--seal-soft); color: var(--seal); border: 1px solid var(--seal); }
+  .chip .mark {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #fff; flex: none;
+  }
+  .chip.ok .mark { background: var(--jade); }
+  .chip.no .mark { background: var(--seal); }
+
+  .addr-line {
+    margin-top: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 8px;
+  }
+  .addr-line .m { color: var(--seal); }
+
+  footer {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 3px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  footer .brand { font-weight: 700; color: var(--ink); }
+  footer .next {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div id="page">
+
+  <div class="masthead">
+    <div>
+      <p class="eyebrow label">請求書発行マニュアル ・ meet me株式会社</p>
+      <h1>迷わず一発で通す、<br>請求書の作り方</h1>
+      <p class="sub">案件にご参加いただいた皆さまへ &nbsp;|&nbsp; スムーズなお支払いのため、必ずご確認ください</p>
+    </div>
+    <div class="pageno label">PAGE<br><b>1 / 2</b></div>
+  </div>
+
+  <div class="flow">
+
+    <!-- STEP 1: timing -->
+    <div class="step">
+      <div class="badge">
+        <span class="num">1</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="7" y="10" width="34" height="30" rx="4"/>
+          <line x1="7" y1="18" x2="41" y2="18"/>
+          <line x1="15" y1="6" x2="15" y2="14"/>
+          <line x1="33" y1="6" x2="33" y2="14"/>
+          <path d="M16 29l5 5 11-12"/>
+        </svg>
+      </div>
+      <div class="content">
+        <h2>発行のタイミング</h2>
+        <ul>
+          <li>全ての投稿と、インサイトの回収が完了してから請求書発行に進んでください</li>
+          <li>請求書は参加者ご自身で発行してください</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- STEP 2: address -->
+    <div class="step">
+      <div class="badge">
+        <span class="num">2</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="14" width="28" height="26" rx="2"/>
+          <line x1="17" y1="21" x2="17" y2="21.1"/>
+          <line x1="24" y1="21" x2="24" y2="21.1"/>
+          <line x1="31" y1="21" x2="31" y2="21.1"/>
+          <line x1="17" y1="28" x2="17" y2="28.1"/>
+          <line x1="24" y1="28" x2="24" y2="28.1"/>
+          <line x1="31" y1="28" x2="31" y2="28.1"/>
+          <path d="M20 8h8v6h-8z"/>
+        </svg>
+      </div>
+      <div class="content">
+        <h2>宛名</h2>
+        <p>請求書の宛名は、必ず以下のとおり記載してください。</p>
+        <div class="addr-line"><span class="m">m</span>eet me株式会社</div>
+        <p style="margin-top:8px;">※「meet me」の <b class="warn-word" style="color:var(--seal)">m は小文字</b> でお願いします</p>
+      </div>
+    </div>
+
+    <!-- STEP 3: filename -->
+    <div class="step">
+      <div class="badge">
+        <span class="num">3</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 22l14-14h12a4 4 0 0 1 4 4v12L28 38a4 4 0 0 1-6 0L8 24z"/>
+          <circle cx="30" cy="18" r="2.2" fill="#fff" stroke="none"/>
+        </svg>
+      </div>
+      <div class="content">
+        <h2>ファイル名・メール件名</h2>
+        <p>ファイル名とメール件名は、必ず以下の形式に統一してください。</p>
+        <div class="filebox">
+          <div class="tmpl">【御請求書】_202●年●月_商品名_アカウント名</div>
+          <div class="ex">例：<b>【御請求書】_2026年4月_深層_ともパパ</b></div>
+        </div>
+        <p style="margin-top:10px;">※メール件名も同じ形式でお願いします</p>
+      </div>
+    </div>
+
+    <!-- STEP 4: how to send -->
+    <div class="step">
+      <div class="badge">
+        <span class="num">4</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="12" width="36" height="26" rx="3"/>
+          <path d="M6 14l18 14L42 14"/>
+        </svg>
+      </div>
+      <div class="content">
+        <h2>送付方法・送付先</h2>
+        <p>送付先：<b>kamio@meetme.co.jp</b></p>
+        <div class="chips">
+          <div class="chip ok"><span class="mark">✓</span>PDF形式で直接添付</div>
+          <div class="chip no"><span class="mark">×</span>スプレッドシート／Excel提出</div>
+          <div class="chip no"><span class="mark">×</span>Googleドライブ共有URL</div>
+        </div>
+        <p style="margin-top:10px; font-size:14px; color:var(--ink-soft);">※ドライブ共有はアクセス権限の問題で確認できないことがあるため不可です</p>
+      </div>
+    </div>
+
+    <!-- STEP 5: PDF pages -->
+    <div class="step">
+      <div class="badge">
+        <span class="num">5</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 10h16l7 7v21a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z"/>
+          <path d="M29 10v7h7"/>
+          <line x1="16" y1="26" x2="30" y2="26"/>
+          <line x1="16" y1="32" x2="26" y2="32"/>
+        </svg>
+      </div>
+      <div class="content">
+        <h2>PDF作成時の注意点</h2>
+        <p>開業届情報などの影響でPDFが2枚以上になることがありますが、<b>必ず1枚の請求書PDFにまとめて</b>提出してください。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="brand">meet me株式会社</span>
+    <span class="next">続きは 6〜10 → 2/2 ページへ</span>
+  </footer>
+
+</div>
+</body>
+</html>
