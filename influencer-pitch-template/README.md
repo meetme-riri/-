@@ -19,6 +19,7 @@
 | [`04-ai-prompt.md`](./04-ai-prompt.md) | 入力シートの内容から営業資料の文章を生成するAIプロンプト |
 | [`05-product-lineup.md`](./05-product-lineup.md) | STARTER / STANDARD / PRO の3段階販売設計と価格 |
 | [`06-case-study-format.md`](./06-case-study-format.md) | 購入者の「案件獲得事例」を集めるための報告フォーマット |
+| [`07-reference-notes.md`](./07-reference-notes.md) | 実際の営業資料2件をレビューして分かった構成パターンの記録（個人情報は除く） |
 
 ## 制作ロードマップ（STEP1〜10）
 
