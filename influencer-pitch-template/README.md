@@ -20,6 +20,7 @@
 | [`05-product-lineup.md`](./05-product-lineup.md) | STARTER / STANDARD / PRO の3段階販売設計と価格 |
 | [`06-case-study-format.md`](./06-case-study-format.md) | 購入者の「案件獲得事例」を集めるための報告フォーマット |
 | [`07-reference-notes.md`](./07-reference-notes.md) | 実際の営業資料2件をレビューして分かった構成パターンの記録（個人情報は除く） |
+| [`08-sales-mechanism.md`](./08-sales-mechanism.md) | 配布方法・販売プラットフォーム・集客導線を含む「販売できる仕組み」全体設計 |
 
 ## 制作ロードマップ（STEP1〜10）
 
